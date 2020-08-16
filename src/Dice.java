@@ -3,9 +3,11 @@ import java.util.Random;
 public class Dice {
     private final int MAX_LIMIT = 6;
     Random random;
+
     public Dice() {
         random = new Random();
     }
+
     int rollDice() {
         int number = random.nextInt(MAX_LIMIT) + 1;
         return number;
