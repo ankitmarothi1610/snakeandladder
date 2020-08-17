@@ -9,8 +9,7 @@ public class Dice {
     }
 
     int rollDice() {
-        int number = random.nextInt(MAX_LIMIT) + 1;
-        return number;
+        return random.nextInt(MAX_LIMIT) + 1;
     }
 
     int roll() {
