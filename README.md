@@ -1,5 +1,5 @@
 # snakeandladder
-<b> A snake and ladder program, <b>
+<b> A snake and ladder program, </b>
 
 <b>Input:</b><br>
 The program takes input from command line and the user can define the snakes and ladder, the board size is fixed to 100
