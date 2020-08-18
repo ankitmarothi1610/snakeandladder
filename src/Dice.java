@@ -2,21 +2,32 @@ import java.util.Random;
 
 public class Dice {
     private final int MAX_LIMIT = 6;
-    Random random;
-
+    private Random random;
+    private int rolls;
     public Dice() {
         random = new Random();
+        rolls = 0;
     }
 
-    int rollDice() {
+    public int getThrowCount() { return rolls; }
+
+    public void setThrowCount(int count) { rolls = count; }
+    public int rollDice() {
+        rolls++;
         return random.nextInt(MAX_LIMIT) + 1;
     }
 
-    int roll() {
+    public int roll() {
         int number = rollDice();
+        System.out.println("Rolled: " + number);
         if (number == MAX_LIMIT) {
             System.out.println("Roll produced number " + MAX_LIMIT + "! Rolling again");
-            number = number + rollDice();
+            number = number + roll();
+            if (number >= 3 * MAX_LIMIT) {
+                // TODO: Return on third throw of 6 instead of a 4th throw
+                System.out.println("Three " + MAX_LIMIT + " rolled, current throw will be counted as 0");
+                number = 0;
+            }
         }
         return number;
     }
