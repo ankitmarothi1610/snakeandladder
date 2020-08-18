@@ -135,26 +135,26 @@ public class Board {
                 } else {
                     System.out.println("Need 1 or 6 to start the game");
                 }
-            }
-
-            number = dice.roll();
-            // If current dice throw is greater than board size, roll till
-            if (number + currentPosition > SIZE) {
-                System.out.println("Looks like you are just there, you need to roll: " + (SIZE - currentPosition));
             } else {
-                currentPosition = currentPosition + number;
-                // Check if a ladder or snake is reached
-                if (ladders.containsKey(currentPosition)) {
-                    System.out.println("Woah! You entered a ladder at position " + currentPosition);
-                    currentPosition = ladders.get(currentPosition);
+                number = dice.roll();
+                // If current dice throw is greater than board size, roll till
+                if (number + currentPosition > SIZE) {
+                    System.out.println("Looks like you are just there, you need to roll: " + (SIZE - currentPosition));
+                } else {
+                    currentPosition = currentPosition + number;
+                    // Check if a ladder or snake is reached
+                    if (ladders.containsKey(currentPosition)) {
+                        System.out.println("Woah! You entered a ladder at position " + currentPosition);
+                        currentPosition = ladders.get(currentPosition);
+                    }
+                    // Check if a snake is reached
+                    if (snakes.containsKey(currentPosition)) {
+                        System.out.println("Oops! Snakebite, at position " + currentPosition);
+                        currentPosition = snakes.get(currentPosition);
+                    }
                 }
-                // Check if a snake is reached
-                if (snakes.containsKey(currentPosition)) {
-                    System.out.println("Oops! Snakebite, at position " + currentPosition);
-                    currentPosition = snakes.get(currentPosition);
-                }
+                System.out.println("CurrentPosition: " + currentPosition + "\n");
             }
-            System.out.println("CurrentPosition: " + currentPosition + "\n");
         }
         System.out.println("\n Game ended after " + dice.getThrowCount() + " throws");
         shouldRepeatGame();
